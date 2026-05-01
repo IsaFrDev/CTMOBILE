@@ -32,10 +32,9 @@ export default function EmailsScreen() {
         'https://www.googleapis.com/auth/userinfo.email', 
         'https://www.googleapis.com/auth/gmail.readonly'
       ],
-      // APK uchun shaxsiy sxemadan foydalanamiz
+      // APK uchun eng xavfsiz va Google tan oladigan format
       redirectUri: AuthSession.makeRedirectUri({
-        scheme: 'ctmobileapp',
-        path: 'emails'
+        native: 'com.islombekmansurov.ctmobileapp:/oauth2redirect',
       }),
     },
     discovery
