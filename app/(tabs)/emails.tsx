@@ -26,17 +26,15 @@ export default function EmailsScreen() {
   // 1. Google Auth Request sozlamalari
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
     {
-      // APK da ham WEB Client ID ishlatamiz (ishonchliroq)
       clientId: "47473682665-l0od8aalgp6doikk0bpu347nhup46jao.apps.googleusercontent.com",
       scopes: [
         'openid', 
         'https://www.googleapis.com/auth/userinfo.email', 
         'https://www.googleapis.com/auth/gmail.readonly'
       ],
-      // MUHIM: Expo Proxy dan foydalanamiz (Google buni bloklamaydi)
-      redirectUri: AuthSession.makeRedirectUri({
-        // Proxy ishlatish Google uchun xavfsiz domen hisoblanadi
-      }),
+      // MUHIM: Proxy havolasini qat'iy (hardcode) yozamiz
+      redirectUri: "https://auth.expo.io/@islombekmansurov/ct-mobile-app",
+      useProxy: true,
     },
     discovery
   );
